@@ -18,7 +18,7 @@ uk:
       title: "Редагування статті"
     form:
       submit:
-        "%{action}статтю"
+        "%{action} статтю"
   categories:
     index:
       title: "Катерогії"
