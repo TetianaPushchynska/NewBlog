@@ -3,5 +3,5 @@
   %ul.nav.nav-pills.nav-stacked
     - Category.roots.each do |category|
       %li.nav_item
-      = link_to category.name, category, class: "nav-link #{"active" if current_page?(category_path(category))}"
+      = link_to category.name, category, class: "nav-link #{"active" if current_page?(category_path(category)) || @post.present? && @post.category == category}"
       = render "shared/submenu_categories", categories: category.root.descendants.arrange
