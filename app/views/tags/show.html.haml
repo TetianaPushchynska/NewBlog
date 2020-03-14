@@ -1,0 +1,5 @@
+%h1= @tag.name
+- if @tag.posts.empty?
+  %h2= "Статтей немає"
+- else
+  = render @tag.posts

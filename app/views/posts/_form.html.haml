@@ -1,0 +1,36 @@
+-if @post.errors.any?
+  %div.alert.alert-danger
+    %h5= t("common.errors")
+    %h6
+      %ul
+        - @post.errors.full_messages.each do |message|
+          %li
+            = message
+
+= form_for @post, html: { multipart: true } do |f|
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: "form-control"
+
+  .form-group
+    = f.label :summary
+    = f.text_area :summary, class: "form-control"
+
+  .form-group
+    = f.label :body
+    = f.trix_editor :body, class: "editor"
+
+  .form-group
+    = f.label :category_id
+    = f.collection_select :category_id, Category.order(:name), :id, :name, { include_blank: true }, class: "form-control"
+
+  .form-group
+    = f.label :all_tags
+    = f.text_field :all_tags, class: "form-control"
+
+  .form-group
+    = f.file_field :image
+
+  .form-group
+    = f.submit t(".submit", action: @post.new_record? ? "Додати" : "Редагувати "), class: "btn btn-primary"
+    = link_to t("common.back"), :back, class: "btn btn-outline-secondary"

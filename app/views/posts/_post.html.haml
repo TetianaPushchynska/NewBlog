@@ -1,0 +1,19 @@
+.article.post
+  .section.post-head
+    %h2= link_to post.title, post_path(post)
+    .br
+    .small
+      %h5.time
+        = post.created_at.to_date.strftime("%d %B, %Y")
+        - if post.category.present?
+          |
+          = link_to post.category.name, post.category
+        |
+        = link_to "Змінити", edit_post_path(post)
+        |
+        = link_to "Видалити", post_path(post), method: :delete, data: { confirm: "Ви впевнені?" }
+  .section.post-summary.clearfix
+    = image_tag post.image.url(:thumb), class: "img-thumbnail thumb" if post.image?
+    %h5= post.summary
+  .section.footer-summary
+    = raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "badge badge-primary" }.join(' ')
