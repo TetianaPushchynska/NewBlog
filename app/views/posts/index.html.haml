@@ -1,3 +1,4 @@
 %h1= t(".title")
+= link_to "Нова стаття", new_admin_post_path, class: "btn btn-outline-primary btn-sm"
 = render @posts
 = paginate @posts

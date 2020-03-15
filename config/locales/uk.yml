@@ -12,20 +12,22 @@ uk:
   posts:
     index:
       title: "Статті"
-    new:
-      title: "Нова стаття"
-    edit:
-      title: "Редагування статті"
-    form:
-      submit:
-        "%{action} статтю"
-  categories:
-    index:
-      title: "Катерогії"
-    new:
-      title: "Нова категорія"
-    edit:
-      title: "Редагування категорії"
-    form:
-      submit:
-        "%{action} категорію "
+  admin:
+    posts:
+      new:
+        title: "Нова стаття"
+      edit:
+        title: "Редагування статті"
+      form:
+        submit:
+          "%{action} статтю"
+    categories:
+      index:
+        title: "Катерогії"
+      new:
+        title: "Нова категорія"
+      edit:
+        title: "Редагування категорії"
+      form:
+        submit:
+          "%{action} категорію "

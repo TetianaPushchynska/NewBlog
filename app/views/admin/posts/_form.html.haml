@@ -7,7 +7,7 @@
           %li
             = message
 
-= form_for @post, html: { multipart: true } do |f|
+= form_for [:admin, @post], html: { multipart: true } do |f|
   .form-group
     = f.label :title
     = f.text_field :title, class: "form-control"
