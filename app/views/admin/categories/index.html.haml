@@ -1,14 +1,14 @@
-%h1= t(".title")
+%h1= t("admin.categories.index.title")
 .buttons_panel
-  = link_to "Нова категорія", new_admin_category_path, class: "btn btn-outline-primary btn-sm"
+  = link_to t("admin.categories.new.title"), new_admin_category_path, class: "btn btn-outline-primary btn-sm"
 
 
   %table.table
     %thead
       %tr
         %th= "#"
-        %th= "Назва"
-        %th= "Категорія батько"
+        %th= t("activerecord.attributes.category.name")
+        %th= t("activerecord.attributes.category.parent_id")
         %th
     %tbody
       - @categories.each_with_index do |category, index|
@@ -17,5 +17,5 @@
           %td= category.name
           %td= category.parent.name if category.parent.present?
           %td
-            = link_to "Змінити", edit_admin_category_path(category), class: "btn btn-outline-primary btn-sm"
-            = link_to "Видалити", admin_category_path(category), method: :delete, data: { confirm: "Ви впевнені?" }, class: "btn btn-outline-danger btn-sm"
+            = link_to t("common.change"), edit_admin_category_path(category), class: "btn btn-outline-primary btn-sm"
+            = link_to t("common.delete"), admin_category_path(category), method: :delete, data: { confirm: t("common.are_you_sure") }, class: "btn btn-outline-danger btn-sm"

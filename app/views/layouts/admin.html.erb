@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><%= t("common.admin_panel") %></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(posts_path) %> ">
+          <a class="nav-link" href="<%= root_path %>"><%= t('common.all_posts') %> <span class="sr-only">(current)</span></a>
+        </li>
+        <% Category.order(:name).roots.each do |category| %>
+          <li class="nav-item <%= 'active' if current_page?(category_path(category)) %> ">
+            <%= link_to category.name, category, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
+    <div>
+      <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item <%= 'active' if current_page?(edit_user_registration_path) %> ">
+            <%= link_to t("common.edit_profile"), edit_user_registration_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item <%= 'active' if current_page?(destroy_user_session_path) %> ">
+            <%= link_to t("common.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item <%= 'active' if current_page?(new_user_session_path) %> ">
+            <%= link_to t("common.log_in"), new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item <%= 'active' if current_page?(new_user_registration_path) %> ">
+            <%= link_to t("common.sign_up"), new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
+        <li class="nav-item <%= 'active' if I18n.locale == :uk %> ">
+          <%= link_to "Укр", { locale: :uk }, class: "nav-link" %>
+        </li>
+        <li class="nav-item <%= 'active' if I18n.locale == :en %> ">
+          <%= link_to "En", { locale: :en }, class: "nav-link" %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container main">
+  <div class="row">
+    <div class="col-md-12">
+      <% flash.each do |name, message| %>
+        <div class="alert <%= bootstrap_class_for(name) %>">
+          <button class="close" data-dismiss="alert">&times;</button>
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-9">
+      <%= yield %>
+    </div>
+    <div class="col-md-3">
+      <%= render "shared/submenu" %>
+
+      <div class="tag_cloud">
+        <h2><%= t("activerecord.attributes.post.all_tags") %></h2>
+        <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+          <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

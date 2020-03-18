@@ -29,8 +29,8 @@ module Blog
 
     # Don't generate system test files.
     config.generators.system_tests = nil
-
     config.time_zone = 'Kyiv'
+    config.i18n.available_locales = [:uk, :en]
     config.i18n.default_locale = :uk
   end
 end

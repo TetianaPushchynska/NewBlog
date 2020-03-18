@@ -12,10 +12,11 @@
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="#"><%= t("common.blog_on_ror") %></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(posts_path) %> ">
-              <a class="nav-link" href="<%= root_path %>">Всі статті <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="<%= root_path %>"><%= t('common.all_posts') %> <span class="sr-only">(current)</span></a>
             </li>
             <% Category.order(:name).roots.each do |category| %>
               <li class="nav-item <%= 'active' if current_page?(category_path(category)) %> ">
@@ -28,20 +29,29 @@
         <div>
           <ul class="navbar-nav mr-auto">
             <% if user_signed_in? %>
+              <li class="nav-item">
+                <%= image_tag current_user.image.variant(resize: '40x40'), class: "image_show" if current_user.image.attached? %>
+              </li>
               <li class="nav-item <%= 'active' if current_page?(edit_user_registration_path) %> ">
-                <%= link_to "Редагувати профіль", edit_user_registration_path, class: "nav-link" %>
+                <%= link_to t("common.edit_profile"), edit_user_registration_path, class: "nav-link" %>
               </li>
               <li class="nav-item <%= 'active' if current_page?(destroy_user_session_path) %> ">
-                <%= link_to "Вийти", destroy_user_session_path, method: :delete, class: "nav-link" %>
+                <%= link_to t("common.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link" %>
               </li>
             <% else %>
               <li class="nav-item <%= 'active' if current_page?(new_user_session_path) %> ">
-                <%= link_to "Увійти", new_user_session_path, class: "nav-link" %>
+                <%= link_to t("common.log_in"), new_user_session_path, class: "nav-link" %>
               </li>
               <li class="nav-item <%= 'active' if current_page?(new_user_registration_path) %> ">
-                <%= link_to "Зареєструватись", new_user_registration_path, class: "nav-link" %>
+                <%= link_to t("common.sign_up"), new_user_registration_path, class: "nav-link" %>
               </li>
             <% end %>
+            <li class="nav-item <%= 'active' if I18n.locale == :uk %> ">
+              <%= link_to "Укр", { locale: :uk }, class: "nav-link" %>
+            </li>
+            <li class="nav-item <%= 'active' if I18n.locale == :en %> ">
+              <%= link_to "En", { locale: :en }, class: "nav-link" %>
+            </li>
           </ul>
         </div>
       </nav>
@@ -63,16 +73,18 @@
         <div class="col-md-9">
           <%= yield %>
         </div>
-        <div class="col-md-3">
-          <%= render "shared/submenu" %>
+        <% unless current_page?(edit_user_registration_path) %>
+          <div class="col-md-3">
+            <%= render "shared/submenu" %>
 
-          <div class="tag_cloud">
-            <h2>Теги</h2>
-            <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
-              <%= link_to tag.name, tag_path(tag.name), class: css_class %>
-            <% end %>
+            <div class="tag_cloud" >
+              <h2><%= t("activerecord.attributes.post.all_tags") %></h2>
+              <% tag_cloud(Tag.counts, %w{tag1 tag2 tag3 tag4 tag5}) do |tag, css_class| %>
+                <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </body>

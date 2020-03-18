@@ -1,0 +1,19 @@
+en:
+  activerecord:
+    models:
+      post: "Post"
+      category: "Category"
+      tag: "Tag"
+    attributes:
+      post:
+        title: "Title"
+        summary: "Summary"
+        body: "Body"
+        all_tags: "Tags"
+        category_id: "Category"
+      category:
+        name: "Title"
+        parent_id: "Parent category"
+    errors:
+      messages:
+        blank: "can't be blank"

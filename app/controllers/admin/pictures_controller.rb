@@ -1,6 +1,4 @@
 class Admin::PicturesController < ApplicationController
-  before_action :authenticate_user!
-
   def create
     @picture = Picture.new(image_params)
     @picture.save

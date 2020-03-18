@@ -39,7 +39,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'haml'
 gem 'bootstrap', '~> 4.4.1'
 gem 'jquery-rails'
-gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 gem 'trix'
 gem 'trix-rails', '~> 2.2'

@@ -17,5 +17,5 @@
     = f.collection_select :parent_id, Category.where(@category.new_record? ? "#{@category.id}" : "id != #{@category.id}").order(:name), :id, :name, { include_blank: true }, class: "form-control"
 
   .form-group
-    = f.submit t(".submit", action: @category.new_record? ? "Додати" : "Редагувати "), class: "btn btn-primary"
+    = f.submit t(".submit", action: @category.new_record? ? t('common.create') : t('common.edit')), class: "btn btn-primary"
     = link_to t("common.back"), :back, class: "btn btn-outline-secondary"

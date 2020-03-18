@@ -1,4 +1,8 @@
-%h1= t(".title")
-= link_to "Нова стаття", new_admin_post_path, class: "btn btn-outline-primary btn-sm"
-= render @posts
-= paginate @posts
+-if user_signed_in? && (current_user.first_name.empty? || current_user.last_name.empty?)
+  = controller.redirect_to edit_user_registration_path, alert: "Вам потрібно вказати Ваше ім'я та прізвище"
+-else
+  %h1= t("posts.index.title")
+  - if user_signed_in? && current_user.admin?
+    = link_to t("admin.posts.new.title"), new_admin_post_path, class: "btn btn-outline-primary btn-sm"
+  = render @posts
+  = paginate @posts

@@ -2,6 +2,18 @@ uk:
   common:
     errors: "При заповненні форми виникли помилки"
     back: "Назад"
+    create: "Створити"
+    edit: "Редагувати"
+    change: "Змінити"
+    delete: "Видалити"
+    are_you_sure: "Ви впевнені?"
+    all_posts: "Всі статті"
+    blog_on_ror: "Блог на RoR"
+    admin_panel: "АдмінПанель"
+    edit_profile: "Редагувати профіль"
+    sign_out: "Вийти"
+    log_in: "Увійти"
+    sign_up: "Зареєструватись"
   views:
     pagination:
       first: "&laquo; Перша"
@@ -30,4 +42,4 @@ uk:
         title: "Редагування категорії"
       form:
         submit:
-          "%{action} категорію "
+          "%{action} категорію"

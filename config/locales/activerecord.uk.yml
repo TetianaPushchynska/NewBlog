@@ -2,12 +2,15 @@ uk:
   activerecord:
     models:
       post: "Стаття"
+      category: "Категорія"
+      tag: "Tег"
     attributes:
       post:
         title: "Назва"
         summary: "Коротка стаття"
         body: "Вміст"
         all_tags: "Теги"
+        category_id: "Категорія"
       category:
         name: "Назва"
         parent_id: "Категорія батько"
