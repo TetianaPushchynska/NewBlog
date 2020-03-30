@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :tags, through: :taggings
   belongs_to :category
   has_many :likes, dependent: :destroy
+  has_many :comments
 
   validates :title, :summary, :body, presence: true
 

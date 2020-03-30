@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :index] do
       delete '/likes' => 'likes#like'
       delete '/dislikes' => 'likes#dislike'
+      resources :comments, except: [:show]
     end
     resources :tags, only: [:show]
     resources :categories, only: [:show]

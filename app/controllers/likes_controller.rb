@@ -32,7 +32,7 @@ class LikesController < ApplicationController
     else
       @post.likes.create(user_id: current_user.id, like: false)
     end
-    redirect_to "#btn_group"
+    redirect_to post_path(@post)
   end
 
   private
