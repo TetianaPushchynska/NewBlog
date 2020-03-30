@@ -45,6 +45,8 @@ gem 'trix-rails', '~> 2.2'
 gem 'kaminari'
 gem 'ancestry'
 gem 'devise'
+gem 'mysql2', '~> 0.5.2'
+gem 'pry'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

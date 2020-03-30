@@ -18,5 +18,13 @@
   .section.post-body
     = image_tag @post.image.variant(resize: '900x900'), class: "img-show" if @post.image.attached?
     %h5= @post.body.html_safe
+  .btn-group
+    = link_to image_tag("like.png", width: 35, height: 35), post_likes_path(@post), method: :delete, remote: :true, class: "like"
+    .retreat
+      %h4= @post.likes.where(like: true).count
+  .btn-group
+    = link_to image_tag("dislike.png", width: 35, height: 35), post_dislikes_path(@post), method: :delete, remote: :true, class: "move dislike"
+    .retreat
+      %h4= @post.likes.where(like: false).count
 
-= render "posts/disqus"
+      //= render "posts/disqus"

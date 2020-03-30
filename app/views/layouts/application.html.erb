@@ -18,6 +18,11 @@
             <li class="nav-item <%= 'active' if current_page?(root_path) || current_page?(posts_path) %> ">
               <a class="nav-link" href="<%= root_path %>"><%= t('common.all_posts') %> <span class="sr-only">(current)</span></a>
             </li>
+            <% if user_signed_in? && current_user.admin? %>
+              <li class="nav-item <%= 'active' if current_page?(admin_categories_path) %> ">
+                <a class="nav-link" href="<%= admin_categories_path %>"><%= t('common.all_categories') %> <span class="sr-only">(current)</span></a>
+              </li>
+            <% end %>
             <% Category.order(:name).roots.each do |category| %>
               <li class="nav-item <%= 'active' if current_page?(category_path(category)) %> ">
                 <%= link_to category.name, category, class: "nav-link" %>

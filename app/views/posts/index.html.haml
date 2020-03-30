@@ -1,4 +1,4 @@
--if user_signed_in? && (current_user.first_name.empty? || current_user.last_name.empty?)
+-if user_signed_in? && (current_user.first_name.nil? || current_user.last_name.nil?)
   = controller.redirect_to edit_user_registration_path, alert: "Вам потрібно вказати Ваше ім'я та прізвище"
 -else
   %h1= t("posts.index.title")
