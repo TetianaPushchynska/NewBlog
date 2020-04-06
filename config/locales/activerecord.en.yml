@@ -4,6 +4,7 @@ en:
       post: "Post"
       category: "Category"
       tag: "Tag"
+      comment: "Comment"
     attributes:
       post:
         title: "Title"
@@ -14,6 +15,8 @@ en:
       category:
         name: "Title"
         parent_id: "Parent category"
+      comment:
+        description: "Description"
     errors:
       messages:
         blank: "can't be blank"

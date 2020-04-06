@@ -26,5 +26,9 @@
     = link_to image_tag("dislike.png", width: 35, height: 35), post_dislikes_path(@post), method: :delete, remote: :true, class: "move dislike"
     .retreat
       %h4= @post.likes.where(like: false).count
+  .btn-group
+    .group
+      = link_to image_tag("comment.png", width: 30, height: 30), new_post_comment_path(@post)
+      = link_to "Коментувати", new_post_comment_path(@post)
+= render "comments/all_comments"
 
-      //= render "posts/disqus"

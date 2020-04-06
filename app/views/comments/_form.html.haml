@@ -1,0 +1,19 @@
+-if @comment.errors.any?
+  %div.alert.alert-danger
+    %h5= t("common.errors")
+    %h6
+      %ul
+        - @comment.errors.full_messages.each do |message|
+          %li
+            = message
+
+= form_for [@post, @comment] do |f|
+  .form-group
+    = f.label :description
+    = f.text_field :description, class: "form-control"
+  = f.hidden_field :post_id, value: @post.id
+  = f.hidden_field :user_id, value: current_user.id
+
+  .form-group
+    = f.submit t(".submit", action: @comment.new_record? ? t('common.create') : t('common.edit')), class: "btn btn-primary"
+    = link_to t("common.cancel"), :back, class: "btn btn-outline-secondary"

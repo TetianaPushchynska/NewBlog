@@ -2,12 +2,15 @@ uk:
   common:
     errors: "При заповненні форми виникли помилки"
     back: "Назад"
+    cancel: "Скасувати"
     create: "Створити"
     edit: "Редагувати"
     change: "Змінити"
+    edit: "Редагувати"
     delete: "Видалити"
     are_you_sure: "Ви впевнені?"
     all_posts: "Всі статті"
+    all_categories: "Всі категорії"
     blog_on_ror: "Блог на RoR"
     admin_panel: "АдмінПанель"
     edit_profile: "Редагувати профіль"
@@ -24,6 +27,16 @@ uk:
   posts:
     index:
       title: "Статті"
+  comments:
+    index:
+      title: "Коментарі"
+    new:
+      title: "Новий коментар"
+    edit:
+      title: "Редагувати коментар"
+    form:
+      submit:
+        "%{action} коментар"
   admin:
     posts:
       new:
@@ -35,7 +48,7 @@ uk:
           "%{action} статтю"
     categories:
       index:
-        title: "Катерогії"
+        title: "Категорії"
       new:
         title: "Нова категорія"
       edit:

@@ -12,7 +12,8 @@ class LikesController < ApplicationController
     else
       @post.likes.create(user_id: current_user.id, like: true)
     end
-    redirect_to post_path(@post)
+    redirect_to post_path(@post) #it is not ajax)
+    #render json: post_path(@post)
   end
 
   def already_liked?
@@ -33,6 +34,7 @@ class LikesController < ApplicationController
       @post.likes.create(user_id: current_user.id, like: false)
     end
     redirect_to post_path(@post)
+    #render json: post_path(@post)
   end
 
   private

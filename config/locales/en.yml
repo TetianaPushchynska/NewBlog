@@ -5,9 +5,11 @@ en:
     create: "Create"
     edit: "Edit"
     change: "Change"
+    edit: "Edit"
     delete: "Delete"
     are_you_sure: "Are you sure?"
     all_posts: "All posts"
+    all_categories: "All сategories"
     blog_on_ror: "Blog on RoR"
     admin_panel: "AdminPanel"
     edit_profile: "Edit profile"
@@ -24,6 +26,16 @@ en:
   posts:
     index:
       title: "Posts"
+  comments:
+    index:
+      title: "Comments"
+    new:
+      title: "New comment"
+    edit:
+      title: "Edit comment"
+    form:
+      submit:
+        "%{action} comment"
   admin:
     posts:
       new:

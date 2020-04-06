@@ -4,6 +4,7 @@ uk:
       post: "Стаття"
       category: "Категорія"
       tag: "Tег"
+      comment: "Коментар"
     attributes:
       post:
         title: "Назва"
@@ -14,6 +15,8 @@ uk:
       category:
         name: "Назва"
         parent_id: "Категорія батько"
+      comment:
+        description: "Опис"
     errors:
       messages:
         blank: "не може бути пустим"
