@@ -14,13 +14,14 @@
               = comment.user.full_name
             = comment.description
         - if comment.user_id == current_user.id
+          = image_tag("menu.png", width: 14, class: "menu_item")
           = link_to t("common.edit"), [:edit, @post, comment], class: "btn btn-outline-primary btn-sm"
           = link_to t("common.delete"), [@post, comment], method: :delete, data: { confirm: t("common.are_you_sure") }, class: "btn btn-outline-danger btn-sm"
 .btn-group.comment-field
   .comment
     - if current_user.image.attached?
-      = image_tag current_user.image.variant(resize: '40x'), class: "image_show"
+      = image_tag current_user.image.variant(resize: '40x'), class: "img"
     - else
-      = image_tag("avatar.png", width: 40, class: "image_show")
+      = image_tag("avatar.png", width: 40, class: "img")
   .color
     %input{type: "text", class: "no-outline", placeholder: "Напишіть коментар..."}/
