@@ -46,6 +46,7 @@ gem 'kaminari'
 gem 'ancestry'
 gem 'devise'
 gem 'mysql2', '~> 0.5.2'
+gem 'thinking-sphinx'
 gem 'pry'
 
 group :development, :test do
