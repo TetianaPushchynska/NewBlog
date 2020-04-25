@@ -18,17 +18,10 @@
   .section.post-body
     = image_tag @post.image.variant(resize: '900x900'), class: "img-show" if @post.image.attached?
     %h5= @post.body.html_safe
-  .btn-group
-    = link_to image_tag("like.png", width: 35, height: 35), post_likes_path(@post), method: :delete, remote: :true, class: "like"
-    .retreat
-      %h4= @post.likes.where(like: true).count
-  .btn-group
-    = link_to image_tag("dislike.png", width: 35, height: 35), post_dislikes_path(@post), method: :delete, remote: :true, class: "move dislike"
-    .retreat
-      %h4= @post.likes.where(like: false).count
-  .btn-group
-    .group
-      = link_to image_tag("comment.png", width: 30, height: 30), new_post_comment_path(@post)
-      = link_to "Коментувати", new_post_comment_path(@post)
-= render "comments/all_comments"
+
+.btn-group
+  = link_to "Approve", approve_admin_post_path, class: "btn btn-outline-success", method: :post if @post.fresh? || @post.rejected?
+.btn-group
+  = link_to "Reject", reject_admin_post_path, class: "btn btn-outline-danger", method: :post if @post.fresh?
+
 

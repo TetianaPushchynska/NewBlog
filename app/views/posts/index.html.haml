@@ -7,7 +7,6 @@
       = text_field_tag :search, params[:search], placeholder: "Search...", class: 'form-control'
       = submit_tag("Search", name: nil, class: "btn btn-outline-primary")
   %br
-  - if user_signed_in? && current_user.admin?
-    = link_to t("admin.posts.new.title"), new_admin_post_path, class: "btn btn-outline-primary btn-sm"
+  = link_to t("posts.new.title"), new_post_path, class: "btn btn-outline-primary btn-sm"
   = render @posts
-  = paginate @posts
+= paginate @posts

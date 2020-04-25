@@ -1,0 +1,26 @@
+- @fresh_post.each do |post|
+  .article.post
+    .section.post-by
+      - if post.user.image.attached?
+        = image_tag post.user.image.variant(resize: '35x'), class: "image_show"
+      - else
+        = image_tag("avatar.png", width: 35, class: "image_show")
+      = post.user.full_name
+    .section.post-head
+      %h2= link_to post.title, admin_path(post)
+      .br
+      .small
+        %h5.time
+          = post.created_at.to_date.strftime("%d %B, %Y")
+          - if post.category.present?
+            |
+            = link_to post.category.name, post.category
+            |
+            = link_to I18n.t("common.change"), edit_post_path(post)
+            |
+            = link_to t("common.delete"), post_path(post), method: :delete, data: { confirm: t("common.are_you_sure") }
+    .section.post-summary.clearfix
+      = image_tag post.image.variant(resize: '200x200'), class: "variant" if post.image.attached?
+      %h5= post.summary
+    .section.footer-summary
+      = raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class: "badge badge-primary" }.join(' ')

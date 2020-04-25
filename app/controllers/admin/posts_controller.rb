@@ -1,43 +1,29 @@
 class Admin::PostsController < Admin::AdminController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: %i[show approve reject]
 
-  def new
-    @post = Post.new
+  def fresh_posts
+    @fresh_post = Post.where(status: "fresh")
   end
 
-  def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to @post, success: "Стаття успішно створена"
-    else
-      flash.now[:danger] = "Стаття не створена"
-      render :new
-    end
+  def rejected_posts
+    @reject_post = Post.where(status: "rejected")
   end
 
-  def edit; end
+  def show; end
 
-  def update
-    if @post.update_attributes(post_params)
-      redirect_to @post, success: "Стаття успішно оновлена"
-    else
-      flash.now[:danger] = "Стаття не оновлена"
-      render :edit
-    end
+  def approve
+    @post.approved!
+    redirect_to posts_path, success: "Стаття успішно підтверджена"
   end
 
-  def destroy
-    @post.destroy
-    redirect_to posts_path, success: "Стаття успішно видалена"
+  def reject
+    @post.rejected!
+    redirect_to admin_rejected_posts_path, success: "Стаття успішно відхилена"
   end
 
   private
 
   def set_post
     @post = Post.find(params[:id])
-  end
-
-  def post_params
-    params.require(:post).permit(:title, :summary, :body, :image, :all_tags, :category_id)
   end
 end

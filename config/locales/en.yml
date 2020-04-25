@@ -18,14 +18,21 @@ en:
     sign_up: "Sign up"
   views:
     pagination:
-      first: "&laquo; First"
-      last: "Last &raquo;"
-      previous: "&lsaquo; Previous"
-      next: "Next &rsaquo;"
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
       truncate: "&hellip;"
   posts:
     index:
       title: "Posts"
+    new:
+      title: "New post"
+    edit:
+      title: "Edit post"
+    form:
+      submit:
+        "%{action} post"
   comments:
     index:
       title: "Comments"
@@ -37,14 +44,6 @@ en:
       submit:
         "%{action} comment"
   admin:
-    posts:
-      new:
-        title: "New post"
-      edit:
-        title: "Edit post"
-      form:
-        submit:
-          "%{action} post"
     categories:
       index:
         title: "Categories"

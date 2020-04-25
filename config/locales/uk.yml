@@ -19,14 +19,21 @@ uk:
     sign_up: "Зареєструватись"
   views:
     pagination:
-      first: "&laquo; Перша"
-      last: "Остання &raquo;"
-      previous: "&lsaquo; Попередня"
-      next: "Наступна &rsaquo;"
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
       truncate: "&hellip;"
   posts:
     index:
       title: "Статті"
+    new:
+      title: "Нова стаття"
+    edit:
+      title: "Редагування статті"
+    form:
+      submit:
+        "%{action} статтю"
   comments:
     index:
       title: "Коментарі"
@@ -38,14 +45,6 @@ uk:
       submit:
         "%{action} коментар"
   admin:
-    posts:
-      new:
-        title: "Нова стаття"
-      edit:
-        title: "Редагування статті"
-      form:
-        submit:
-          "%{action} статтю"
     categories:
       index:
         title: "Категорії"

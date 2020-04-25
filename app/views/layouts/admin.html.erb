@@ -21,6 +21,12 @@
         <li class="nav-item <%= 'active' if current_page?(admin_categories_path) %> ">
           <a class="nav-link" href="<%= admin_categories_path %>"><%= t('common.all_categories') %> <span class="sr-only">(current)</span></a>
         </li>
+        <li class="nav-item <%= 'active' if current_page?(admin_fresh_posts_path) %> ">
+          <a class="nav-link" href="<%= admin_fresh_posts_path %>"><%= t('common.fresh_posts') %> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item <%= 'active' if current_page?(admin_rejected_posts_path) %> ">
+          <a class="nav-link" href="<%= admin_rejected_posts_path %>"><%= t('common.rejected_posts') %> <span class="sr-only">(current)</span></a>
+        </li>
         <% Category.order(:name).roots.each do |category| %>
           <li class="nav-item <%= 'active' if current_page?(category_path(category)) %> ">
             <%= link_to category.name, category, class: "nav-link" %>

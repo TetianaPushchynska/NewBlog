@@ -7,7 +7,7 @@
           %li
             = message
 
-= form_for [:admin, @post], html: { multipart: true } do |f|
+= form_for @post, html: { multipart: true } do |f|
   .form-group
     = f.label :title
     = f.text_field :title, class: "form-control"
@@ -30,6 +30,8 @@
 
   .form-group
     = f.file_field :image
+
+  = f.hidden_field :user_id, value: current_user.id
 
   .form-group
     = f.submit t(".submit", action: @post.new_record? ? t('common.create') : t('common.edit')), class: "btn btn-primary"

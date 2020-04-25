@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  enum status: %i[fresh approved rejected]
+
   has_one_attached :image
 
   has_many :taggings, dependent: :destroy
@@ -6,6 +8,7 @@ class Post < ApplicationRecord
   belongs_to :category
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  belongs_to :user
 
   validates :title, :summary, :body, presence: true
 

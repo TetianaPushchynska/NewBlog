@@ -46,8 +46,9 @@ gem 'kaminari'
 gem 'ancestry'
 gem 'devise'
 gem 'mysql2', '~> 0.5.2'
-gem 'thinking-sphinx'
+gem 'thinking-sphinx', '~> 3.1', '>= 3.1.4'
 gem 'pry'
+gem 'cancancan'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
