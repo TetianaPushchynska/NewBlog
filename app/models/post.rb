@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   enum status: %i[fresh approved rejected]
 
-  has_one_attached :image
+  has_many_attached :images
 
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings

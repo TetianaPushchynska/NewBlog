@@ -16,7 +16,20 @@
           |
           = link_to t("common.delete"), post_path(@post), method: :delete, data: { confirm: t("common.are_you_sure") }
   .section.post-body
-    = image_tag @post.image.variant(resize: '900x900'), class: "img-show" if @post.image.attached?
+    - if @post.images.attached?
+      #carouselExampleControls.carousel.slide{"data-ride" => "carousel"}
+        .carousel-inner
+          .carousel-item.active
+            = image_tag @post.images.first.variant(resize: '900x900'), class: "img-show"
+          - @post.images.each do |image|
+            .carousel-item
+              = image_tag image.variant(resize: '900x900'), class: "img-show"
+        %a.carousel-control-prev{"data-slide" => "prev", :href => "#carouselExampleControls", :role => "button"}
+          %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.carousel-control-next{"data-slide" => "next", :href => "#carouselExampleControls", :role => "button"}
+          %span.carousel-control-next-icon{"aria-hidden" => "true"}
+          %span.sr-only Next
     %h5= @post.body.html_safe
   .btn-group
     = link_to image_tag("like.png", width: 35, height: 35), post_likes_path(@post), method: :delete, remote: :true, class: "like"
