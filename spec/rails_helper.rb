@@ -72,5 +72,6 @@ RSpec.configure do |config|
   Capybara.default_driver = :selenium_chrome
 
   config.include FactoryBot::Syntax::Methods
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include AcceptanceHelpers, type: :feature
 end
