@@ -32,5 +32,16 @@ module Blog
     config.time_zone = 'Kyiv'
     config.i18n.available_locales = [:uk, :en]
     config.i18n.default_locale = :uk
+
+    config.generators do |g|
+      g.test_framework :rspec,
+                       fixtures: true,
+                       view_spec: false,
+                       helper_specs: false,
+                       routing_specs: false,
+                       request_specs: false,
+                       controller_spec: true
+      g.fixture_replacement :factory_bot, dir: 'spec/factories'
+    end
   end
 end

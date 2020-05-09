@@ -5,6 +5,7 @@ class User < ApplicationRecord
   enum role: %i[guest registered manager admin]
 
   has_one_attached :image
+
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :posts, dependent: :destroy
