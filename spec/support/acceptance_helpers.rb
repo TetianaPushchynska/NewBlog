@@ -5,4 +5,11 @@ module AcceptanceHelpers
     fill_in 'Password', with: user.password
     click_on 'Log in'
   end
+
+  def sign_in(user_with_name)
+    visit new_user_session_path
+    fill_in 'Email', with: user_with_name.email
+    fill_in 'Password', with: user_with_name.password
+    click_on 'Log in'
+  end
 end

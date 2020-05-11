@@ -7,7 +7,7 @@ feature 'User sign in', '
 ' do
 
   given(:user) { create(:user) }
-  let(:user) { create(:user_with_name) }
+  given(:user_with_name) { create(:user_with_name) }
 
   scenario 'Registered user try to sign in without first and last names' do
     sign_in(user)
@@ -17,7 +17,7 @@ feature 'User sign in', '
   end
 
   scenario 'Registered user try to sign in with first and last names' do
-    sign_in(user)
+    sign_in(user_with_name)
 
     expect(text).to have_content "Вхід успішний"
     expect(current_path).to eq "/uk"
