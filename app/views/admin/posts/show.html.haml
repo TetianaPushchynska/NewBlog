@@ -16,7 +16,7 @@
           |
           = link_to t("common.delete"), post_path(@post), method: :delete, data: { confirm: t("common.are_you_sure") }
   .section.post-body
-    = image_tag @post.image.variant(resize: '900x900'), class: "img-show" if @post.image.attached?
+    = image_tag @post.image, class: "img-show" if @post.image.attached?
     %h5= @post.body.html_safe
 
 .btn-group
