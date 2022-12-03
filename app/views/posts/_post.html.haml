@@ -20,7 +20,7 @@
           |
           = link_to t("common.delete"), post_path(post), method: :delete, data: { confirm: t("common.are_you_sure") }
   .section.post-summary.clearfix
-    = image_tag post.images.first.variant(resize: '200x200'), class: "variant" if post.images.attached?
+    = image_tag post.images.first.blob if post.images.attached?
     %h5= post.summary
   .btn-group
     = image_tag("like.png", width: 20, height: 20)

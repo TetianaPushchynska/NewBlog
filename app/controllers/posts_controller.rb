@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.search params[:search], with: {status: 1}, ranker: :proximity_bm25
+    @posts = Post.all.page(params[:page])
+    # search params[:search], with: {status: 1}, ranker: :proximity_bm25
   end
 
   def new
