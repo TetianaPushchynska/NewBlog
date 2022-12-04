@@ -1,17 +1,15 @@
 pipeline {
 	agent any
 	stages {
-		stages('version') {
+		stage('version') {
 			steps {
 				sh 'ruby --version'
 			}
 		}
-	}
-	stages {
-		stages('hello') {
-			steps {
+		stage('hello') {
+      steps {
         sh 'ruby Hello.rb'
       }
-		}
+    }
 	}
 }
