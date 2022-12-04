@@ -7,4 +7,11 @@ pipeline {
 			}
 		}
 	}
+	stages {
+		stages('hello') {
+			steps {
+        sh 'ruby Hello.rb'
+      }
+		}
+	}
 }
